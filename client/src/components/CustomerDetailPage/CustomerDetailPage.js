@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Modal from "react-modal";
+
 import axios from "axios";
 import {AddressBox} from "../../components/CustomerCard/CustomerCard";
 import "./CustomerDetailPage.css";
@@ -19,7 +20,7 @@ const CustomerDetailePage = () => {
 
   const fetchCustomer = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/customers/${id}`);
+      const res = await axios.get(`https://customer-management-api.onrender.com/api/customers/${id}`);
       setCustomer(res.data);
     } catch (err) {
       console.error("Error fetching customer:", err);
@@ -28,7 +29,7 @@ const CustomerDetailePage = () => {
 
   const fetchAddresses = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/customers/${id}/addresses`);
+      const res = await axios.get(`https://customer-management-api.onrender.com/api/customers/${id}/addresses`);
       setAddresses(res.data);
     } catch (err) {
       console.error("Error fetching addresses:", err);
@@ -37,7 +38,7 @@ const CustomerDetailePage = () => {
 
   const handleAddAddress = async () => {
     try {
-      await axios.post(`http://localhost:5000/api/customers/${id}/addresses`, newAddress);
+      await axios.post(`https://customer-management-api.onrender.com/api/customers/${id}/addresses`, newAddress);
       setNewAddress({ address_details: "", city: "", state: "", pin_code: "" });
       fetchAddresses();
     } catch (err) {
@@ -48,7 +49,7 @@ const CustomerDetailePage = () => {
 const handleUpdateAddress = async (updatedAddress) => {
   try {
     await axios.put(
-      `http://localhost:5000/api/addresses/${updatedAddress.id}`,
+      `https://customer-management-api.onrender.com/api/addresses/${updatedAddress.id}`,
       updatedAddress
     )
     
@@ -62,7 +63,7 @@ const handleUpdateAddress = async (updatedAddress) => {
 
   const handleDeleteAddress = async (addressId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/addresses/${addressId}`);
+      await axios.delete(`https://customer-management-api.onrender.com/api/addresses/${addressId}`);
       fetchAddresses();
     } catch (err) {
       console.error("Error deleting address:", err);
@@ -123,7 +124,7 @@ const handleUpdateAddress = async (updatedAddress) => {
         onChange={(e) => setNewAddress({ ...newAddress, state: e.target.value })}
         placeholder="State"
       />
-      <label htmlFor = "PinCodeId">Pin Code</label>
+      <label htmlFor = "PinCodeId"> Pin Code</label>
       <input id = 'PinCodeId'
         type="text"
         value={newAddress.pin_code}

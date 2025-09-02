@@ -18,7 +18,7 @@ function CustomerListPage() {
 
         const fetchCustomers = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/customers");
+            const response = await axios.get("https://customer-management-api.onrender.com/api/customers");
            
             const data = response.data.map((each) => ({
                 id: each.id || each._id,
@@ -36,7 +36,7 @@ function CustomerListPage() {
     const handleCreateCustomer = async () => {
     
         try {
-            await axios.post("http://localhost:5000/api/customers/", newCustomer);
+            await axios.post("https://customer-management-api.onrender.com/api/customers/", newCustomer);
             fetchCustomers(); 
             setIsCreateModalOpen(false);
             setNewCustomer({ first_name: "", last_name: "", phone_number: "" });
@@ -50,7 +50,7 @@ function CustomerListPage() {
         if (!window.confirm("Are you sure you want to delete this customer?")) return;
         try {
             
-            await axios.delete(`http://localhost:5000/api/customers/${id}`);
+            await axios.delete(`https://customer-management-api.onrender.com/api/customers/${id}`);
              setCustomers((prev) => prev.filter((c) => c.id !== id));
              
             
