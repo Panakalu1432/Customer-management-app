@@ -18,7 +18,7 @@ function CustomerListPage() {
 
         const fetchCustomers = async () => {
         try {
-            const response = await axios.get("https://customer-management-api.onrender-1.com/api/customers");
+            const response = await axios.get("https://customer-management-api-3.onrender.com/api/customers");
            
             const data = response.data.map((each) => ({
                 id: each.id || each._id,
@@ -36,7 +36,7 @@ function CustomerListPage() {
     const handleCreateCustomer = async () => {
     
         try {
-            await axios.post("https://customer-management-api.onrender-1.com/api/customers/", newCustomer);
+            await axios.post("https://customer-management-api-3.onrender.com/api/customers/", newCustomer);
             fetchCustomers(); 
             setIsCreateModalOpen(false);
             setNewCustomer({ first_name: "", last_name: "", phone_number: "" });
@@ -50,17 +50,15 @@ function CustomerListPage() {
         if (!window.confirm("Are you sure you want to delete this customer?")) return;
         try {
             
-            await axios.delete(`https://customer-management-api.onrender-1.com/api/customers/${id}`);
+            await axios.delete(`https://customer-management-api-3.onrender.com/api/customers/${id}`);
              setCustomers((prev) => prev.filter((c) => c.id !== id));
              
             
         } catch (error) {
             console.error("Error deleting customer:", error);
         }
-        };
+    };
 
-
-    
 
   
   const filteredCustomers = customers.filter(
@@ -81,17 +79,18 @@ function CustomerListPage() {
 
   const [errors, setErrors] = useState({});
 
-const handleBlur = (field, value) => {
-  if (!value.trim()) {
-    setErrors((prev) => ({ ...prev, [field]: `${field.replace("_", " ")} cannot be empty` }));
-  } else {
-    setErrors((prev) => {
-      const newErrors = { ...prev };
-      delete newErrors[field];
-      return newErrors;
-    });
-  }
-};
+
+  const handleBlur = (field, value) => {
+    if (!value.trim()) {
+      setErrors((prev) => ({ ...prev, [field]: `${field.replace("_", " ")} cannot be empty` }));
+    } else {
+      setErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[field];
+        return newErrors;
+      });
+    }
+  };
 
 
 

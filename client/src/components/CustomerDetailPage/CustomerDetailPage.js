@@ -20,7 +20,7 @@ const CustomerDetailePage = () => {
 
   const fetchCustomer = async () => {
     try {
-      const res = await axios.get(`https://customer-management-api-1.onrender.com/api/customers/${id}`);
+      const res = await axios.get(`https://customer-management-api-3.onrender.com/api/customers/${id}`);
       setCustomer(res.data);
     } catch (err) {
       console.error("Error fetching customer:", err);
@@ -29,7 +29,7 @@ const CustomerDetailePage = () => {
 
   const fetchAddresses = async () => {
     try {
-      const res = await axios.get(`https://customer-management-api-1.onrender.com/api/customers/${id}/addresses`);
+      const res = await axios.get(`https://customer-management-api-3.onrender.com/api/customers/${id}/addresses`);
       setAddresses(res.data);
     } catch (err) {
       console.error("Error fetching addresses:", err);
@@ -38,7 +38,7 @@ const CustomerDetailePage = () => {
 
   const handleAddAddress = async () => {
     try {
-      await axios.post(`https://customer-management-api.onrender-1.com/api/customers/${id}/addresses`, newAddress);
+      await axios.post(`https://customer-management-api-3.onrender.com/api/customers/${id}/addresses`, newAddress);
       setNewAddress({ address_details: "", city: "", state: "", pin_code: "" });
       fetchAddresses();
     } catch (err) {
@@ -49,7 +49,7 @@ const CustomerDetailePage = () => {
 const handleUpdateAddress = async (updatedAddress) => {
   try {
     await axios.put(
-      `https://customer-management-api.onrender-1.com/api/addresses/${updatedAddress.id}`,
+      `https://customer-management-api-3.onrender.com/api/addresses/${updatedAddress.id}`,
       updatedAddress
     )
     
@@ -63,7 +63,7 @@ const handleUpdateAddress = async (updatedAddress) => {
 
   const handleDeleteAddress = async (addressId) => {
     try {
-      await axios.delete(`https://customer-management-api-1.onrender.com/api/addresses/${addressId}`);
+      await axios.delete(`https://customer-management-api-3.onrender.com/api/addresses/${addressId}`);
       fetchAddresses();
     } catch (err) {
       console.error("Error deleting address:", err);
