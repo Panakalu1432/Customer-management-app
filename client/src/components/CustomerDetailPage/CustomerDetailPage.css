@@ -1,0 +1,65 @@
+.customer-detail-container {
+  padding: 20px;
+  max-width: 700px;
+  margin: auto;
+  background-image: radial-gradient(#588cd4 , #7d89c7);
+  min-height: 100vh;
+  min-width: 100vw;
+}
+.customer-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.address-list {
+  list-style: none;
+  padding: 0;
+}
+
+.address-card {
+  background: #f8f9fa;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  display: flex;
+ 
+  justify-content: space-between;
+  align-items: center;
+}
+
+.address-card button {
+  margin-left: 10px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.address-card button:first-of-type {
+  background-color: #ffc107;
+}
+
+.address-card button:last-of-type {
+  background-color: #dc3545;
+  color: white;
+}
+
+.address-form input {
+  margin: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.address-form button {
+  padding: 8px 16px;
+  margin-top: 10px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
