@@ -18,7 +18,7 @@ function CustomerListPage() {
 
         const fetchCustomers = async () => {
         try {
-            const response = await axios.get("https://customer-management-api-3.onrender.com/api/customers");
+            const response = await axios.get("https://customer-management-api-3.onrender.com/api/customers/");
            
             const data = response.data.map((each) => ({
                 id: each.id || each._id,
